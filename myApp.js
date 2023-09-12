@@ -1,6 +1,7 @@
 require('dotenv').config();
+let mongoose = require('mongoose');
 
-
+mongoose.connect('mongodb+srv://wendy_wej:un9ZC5moFwVGrowo@boilerplate-mongomongoo.kmtehmh.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 let Person;
 
 const createAndSavePerson = (done) => {
