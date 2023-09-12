@@ -1,7 +1,9 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
+const mongodb = require('mongodb');
+
+mongoose.connect('mongodb+srv://wendy_wej:tVynSKRVnwK9diYz@boilerplate-mongomongoo.kmtehmh.mongodb.net/boilerplate-mongomongoose?retryWrites=true&w=majority');
 let Person;
 
 const createAndSavePerson = (done) => {
