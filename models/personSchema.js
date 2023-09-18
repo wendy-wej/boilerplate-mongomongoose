@@ -1,4 +1,4 @@
-const personSchema = new Mongoose.Schema({
+const personSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please enter a name'],
