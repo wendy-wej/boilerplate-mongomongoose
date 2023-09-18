@@ -27,7 +27,7 @@ let Person;
         type: Number,
         required: [true, 'Enter a valid age']
     },
-    favfoods:{
+    favoriteFoods:{
         type: [String],
         required: [true, 'Enter a valid food']
     }
