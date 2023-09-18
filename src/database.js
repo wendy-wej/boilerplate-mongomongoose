@@ -1,7 +1,8 @@
 let mongoose = require('mongoose');
 require('dotenv').config()
+const mongo_url = process.env.MONGO_URI
 
-mongoose.connect({
+mongoose.connect(mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true, // Add this option to remove deprecation warning
