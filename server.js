@@ -7,6 +7,8 @@ const express = require("express");
 const app = express();
 require('dotenv').config();
 
+
+
 let mongoose;
 try {
   mongoose = require("mongoose");
@@ -17,7 +19,7 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const router = express.Router();
-const Database = require("./src/database.js");
+
 
 const enableCORS = function (req, res, next) {
   if (!process.env.DISABLE_XORIGIN) {

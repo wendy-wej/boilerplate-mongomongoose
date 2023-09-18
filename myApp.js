@@ -2,8 +2,23 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const mongodb = require('mongodb');
+require('dotenv').config()
+const mongo_url = process.env.MONGO_URI
 
-mongoose.connect('mongodb+srv://wendy_wej:tVynSKRVnwK9diYz@boilerplate-mongomongoo.kmtehmh.mongodb.net/boilerplate-mongomongoose?retryWrites=true&w=majority');
+mongoose
+  .connect(mongo_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true, // Add this option to remove deprecation warning
+  })
+  .then(()=>{
+    console.log('Database connection successful!')
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+                  
+                  
 let Person;
 
 const createAndSavePerson = (done) => {
