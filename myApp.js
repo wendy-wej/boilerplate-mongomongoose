@@ -18,8 +18,23 @@ mongoose
     console.log(err)
   })
                   
-                  
-let Person;
+let Person;                
+  const personSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Please enter a name'],
+    },
+
+    age:{
+        type: Number,
+        required: [true, 'Enter a valid age']
+    },
+    favfoods:{
+        type: [String],
+        required: [true, 'Enter a valid food']
+    }
+})
+Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
