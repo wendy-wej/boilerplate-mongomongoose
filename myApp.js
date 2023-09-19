@@ -77,35 +77,49 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  Person.find({name: personName}, (err,personFound) =>{
+  Person.find({name: personName}, (err,nameFound) =>{
     if(err){
       return done(err)
     }
-    return done(null, personFound);
+    return done(null, nameFound);
   })
 };
 
 const findOneByFood = (food, done) => {
-  Person.findOne({favoriteFoods: food}, (err, personFound)=>{
+  Person.findOne({favoriteFoods: food}, (err, foodFound)=>{
     if(err){
       return err
     }
-    return done(null, personFound);
+    return done(null, foodFound);
   });
 };
 
 const findPersonById = (personId, done) => {
-  Person.findById(personId, (err, personFound)=>{
+  Person.findById(personId, (err, person)=>{
     if(err){
       return err
     }
-    return done(null, personFound);
+    return done(null, person);
   });
 };
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
+  Person.findById(personId, (err, person)=>{
+    if(err){
+      return done(err);
+    }
+    // Array.push() method to add "hamburger" to the list of the person's favoriteFoods
+    person.favoriteFoods.push(foodToAdd);
 
+    // and inside the find callback - save() the updated Person.
+    person.save((err, updatedPerson)=>{
+      if(err){
+        return err
+      }
+      return done(null, updatedPerson);
+    })
+  })
   done(null /*, data*/);
 };
 
